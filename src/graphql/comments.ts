@@ -9,6 +9,7 @@ export const comments = gql`
         email
       }
       createdAt
+      distanceInDays
     }
   }
 `;
