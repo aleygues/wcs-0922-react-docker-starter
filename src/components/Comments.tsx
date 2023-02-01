@@ -1,13 +1,13 @@
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { IComment, IUser } from "../interfaces";
+import { IComment } from "../interfaces";
 import { comments } from "../graphql/comments";
 import { createComment } from "../graphql/createComment";
 import { Comment } from "./Comment";
-import { UserContext } from "../hooks/user.context";
+import { useUser } from "../hooks/user.context";
 
 export function Comments() {
-  const userContext = useContext(UserContext);
+  const userContext = useUser();
   const [comment, setComment] = useState("");
   const { data } = useQuery<{ comments: IComment[] }>(comments);
   const [doCreateComment] = useMutation(createComment, {

@@ -7,6 +7,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { Main } from "./components/Main";
+import { UserProvider } from "./hooks/user.context";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:5000",
@@ -32,7 +33,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Main />
+      <UserProvider>
+        <Main />
+      </UserProvider>
     </ApolloProvider>
   );
 }

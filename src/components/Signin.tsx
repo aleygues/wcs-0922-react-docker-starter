@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { signin } from "../graphql/signin";
+import { useUser } from "../hooks/user.context";
 
-export function Signin(props: { onTokenChange: (token: string) => void }) {
+export function Signin() {
+  const { login } = useUser();
   const [email, setEmail] = useState("test@gmail.com");
   const [password, setPassword] = useState("supersecret");
   const [wrongCredentials, setWrongCredentials] = useState(false);
@@ -19,7 +21,7 @@ export function Signin(props: { onTokenChange: (token: string) => void }) {
       });
       // data.signin = "uijbsdgbsdogjuvb";
       if (data.signin) {
-        props.onTokenChange(data.signin);
+        login(data.signin);
       } else {
         setWrongCredentials(true);
       }
