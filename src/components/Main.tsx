@@ -1,6 +1,6 @@
-import { Dashboard } from "./Dashboard";
-import { Signup } from "./Signup";
-import { Signin } from "./Signin";
+import { Dashboard } from "./../screens/Dashboard";
+import { Signup } from "./../screens/Signup";
+import { Signin } from "../screens/Signin";
 import { useUser } from "../hooks/user.context";
 
 export function Main() {
